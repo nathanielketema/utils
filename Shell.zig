@@ -8,14 +8,14 @@ arena: Allocator,
 
 const Shell = @This();
 
-fn init(io: Io, arena: Allocator) Shell {
+pub fn init(io: Io, arena: Allocator) Shell {
     return .{
         .io = io,
         .arena = arena,
     };
 }
 
-fn run(shell: Shell, comptime fmt: []const u8, args: anytype) !void {
+pub fn run(shell: Shell, comptime fmt: []const u8, args: anytype) !void {
     const command = try std.fmt.allocPrint(shell.arena, fmt, args);
 
     var it = std.mem.tokenizeScalar(u8, command, ' ');
