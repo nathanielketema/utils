@@ -6,11 +6,11 @@ const Allocator = std.mem.Allocator;
 const ArrayList = std.ArrayList;
 const SourceLocation = std.builtin.SourceLocation;
 
-fn maybe(ok: bool) void {
+pub fn maybe(ok: bool) void {
     assert(ok or !ok);
 }
 
-const Shell = struct {
+pub const Shell = struct {
     io: Io,
     arena: Allocator,
 
@@ -37,7 +37,7 @@ const Shell = struct {
     }
 };
 
-const Snapshot = struct {
+pub const Snapshot = struct {
     location: SourceLocation,
     text: []const u8,
     update_this: bool = false,
